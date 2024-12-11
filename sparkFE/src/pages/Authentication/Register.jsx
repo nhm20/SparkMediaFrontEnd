@@ -10,6 +10,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { registerUserAction } from "../../Redux/Auth/authAction";
+import { useNavigate } from "react-router-dom";
 
 const initialValues = {
   firstName: "",
@@ -31,7 +32,8 @@ const validationSchema = Yup.object({
 
 const Register = () => {
   const [gender, setGender] = React.useState("");
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
+  const navigate=useNavigate();
   const handleSubmit = (values) => {
     values.gender = gender;
     console.log("Form submitted with values:", values);
@@ -39,112 +41,119 @@ const Register = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ setFieldValue }) => (
-        <Form className="space-y-5">
-          <div className="space-y-5">
-            <div>
-              <Field
-                as={TextField}
-                name="firstName"
-                placeholder="First Name"
-                type="text"
-                variant="outlined"
-                fullWidth
-              />
-              <ErrorMessage
-                name="firstName"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-            <div>
-              <Field
-                as={TextField}
-                name="lastName"
-                placeholder="Last Name"
-                type="text"
-                variant="outlined"
-                fullWidth
-              />
-              <ErrorMessage
-                name="lastName"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-            <div>
-              <Field
-                as={TextField}
-                name="email"
-                placeholder="Email"
-                type="email"
-                variant="outlined"
-                fullWidth
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-            <div>
-              <Field
-                as={TextField}
-                name="password"
-                placeholder="password"
-                type="password"
-                variant="outlined"
-                fullWidth
-              />
-              <ErrorMessage
-                name="password"
-                component="div"
-                className="text-red-500"
-              />
-            </div>
-            <div>
-              <RadioGroup
-                row
-                aria-label="gender"
-                name="gender"
-                onChange={(e) => setFieldValue("gender", e.target.value)}
-              >
-                <FormControlLabel
-                  value="female"
-                  control={<Radio />}
-                  label="Female"
+    <>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ setFieldValue }) => (
+          <Form className="space-y-5">
+            <div className="space-y-5">
+              <div>
+                <Field
+                  as={TextField}
+                  name="firstName"
+                  placeholder="First Name"
+                  type="text"
+                  variant="outlined"
+                  fullWidth
                 />
-                <FormControlLabel
-                  value="male"
-                  control={<Radio />}
-                  label="Male"
+                <ErrorMessage
+                  name="firstName"
+                  component="div"
+                  className="text-red-500"
                 />
-              </RadioGroup>
-              <ErrorMessage
-                name="gender"
-                component="div"
-                className="text-red-500"
-              />
+              </div>
+              <div>
+                <Field
+                  as={TextField}
+                  name="lastName"
+                  placeholder="Last Name"
+                  type="text"
+                  variant="outlined"
+                  fullWidth
+                />
+                <ErrorMessage
+                  name="lastName"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              <div>
+                <Field
+                  as={TextField}
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                  variant="outlined"
+                  fullWidth
+                />
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              <div>
+                <Field
+                  as={TextField}
+                  name="password"
+                  placeholder="password"
+                  type="password"
+                  variant="outlined"
+                  fullWidth
+                />
+                <ErrorMessage
+                  name="password"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
+              <div>
+                <RadioGroup
+                  row
+                  aria-label="gender"
+                  name="gender"
+                  onChange={(e) => setFieldValue("gender", e.target.value)}
+                >
+                  <FormControlLabel
+                    value="female"
+                    control={<Radio />}
+                    label="Female"
+                  />
+                  <FormControlLabel
+                    value="male"
+                    control={<Radio />}
+                    label="Male"
+                  />
+                </RadioGroup>
+                <ErrorMessage
+                  name="gender"
+                  component="div"
+                  className="text-red-500"
+                />
+              </div>
             </div>
-          </div>
-          <Button
-            sx={{ padding: ".8rem 0rem" }}
-            fullWidth
-            type="submit"
-            variant="contained"
-            color="primary"
-          >
-            Register
-          </Button>
-        </Form>
-      )}
-    </Formik>
+            <Button
+              sx={{ padding: ".8rem 0rem" }}
+              fullWidth
+              type="submit"
+              variant="contained"
+              color="primary"
+            >
+              Register
+            </Button>
+          </Form>
+        )}
+      </Formik>
+      <div className="flex gap-2 items-center justify-center pt-5">
+        <p>If you have  already accout ?</p>
+        <Button onClick={() => navigate("/login")}>Login</Button>
+      </div>
+    </>
   );
+      
 };
 
 export default Register;

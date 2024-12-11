@@ -1,3 +1,4 @@
+import React from "react";
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
@@ -17,12 +18,12 @@ export const navigationMenu = [
   {
     title: "Reels",
     icon: <ExploreIcon />,
-    path: "/",
+    path: "/reels",
   },
   {
     title: "Create Reels",
     icon: <ControlPointIcon />,
-    path: "/",
+    path: "/create-reels",
   },
   {
     title: "Notifications",
@@ -32,7 +33,7 @@ export const navigationMenu = [
   {
     title: "Message",
     icon: <MessageIcon />,
-    path: "/",
+    path: "/message",
   },
   {
     title: "Lists",
@@ -47,6 +48,6 @@ export const navigationMenu = [
   {
     title: "Profile",
     icon: <AccountCircleIcon />,
-    path: "/",
+    path: "/profile",
   },
 ];

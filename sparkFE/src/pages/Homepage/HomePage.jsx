@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@mui/material";
-import Sidebar from "../components/Sidebar/Sidebar";
-import { Route, Routes, useLocation} from "react-router-dom";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import { Route, Routes, useLocation } from "react-router-dom";
+import Reels from "../../components/Reels/Reels";
+import CreateReelsForm from "../../components/Reels/CreateReelsForm";
+import Profile from "../Profile/Profile";
+import MiddlePart from "../../components/MiddlePart/MiddlePart";
+import HomeRight from "../../components/HomeRight/HomeRight";
 
-import Reels from "../components/Reels/Reels";
-import CreateReelsForm from "../components/Reels/CreateReelsForm";
-import Profile from "./Profile";
-import MiddlePart from "../components/MiddlePart/MiddlePart";
-import HomeRight from "../components/HomeRight/HomeRight";
 const HomePage = () => {
-  const location = useLocation();
   return (
     <div className="px-20">
       <Grid container spacing={0}>
@@ -31,14 +30,14 @@ const HomePage = () => {
             <Route path="/profile/:id" element={<Profile />} />
           </Routes>
         </Grid>
-        <Grid item  lg={3} className="relative">
+        {/* <Grid item lg={3} className="relative">
           <div className="sticky top-0 w-full">
             <HomeRight />
           </div>
-          </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );
-};
+}
 
 export default HomePage;
